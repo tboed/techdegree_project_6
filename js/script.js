@@ -108,15 +108,8 @@ searchBar.addEventListener('keyup', (e) => {
    searchInput = e.target.value.toLowerCase();
    search(data);
 })
- 
-// function search(list)
-//select search element
-//set search input to a variable
-//create matches array variable   
-//set variable for names in the students array (name.first + name.last)
-//loop over data array
-//use includes() method to check for:
-//if studentName includes(searchInput)
-//then .push() that student onto the matches array
-//call methods and pass matches array to them in order to showPage and addPagination properly
 
+const searchButton = document.querySelector('.student-search button')
+searchButton.addEventListener('click', (e) => {
+   e.target = search(data);
+})
