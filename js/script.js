@@ -18,12 +18,12 @@ const showPage = (list, page) => {
       let studentItem =  `
       <li class="student-item cf">
          <div class="student-details">
-            <img class="avatar" src="${data[i].picture.large}" alt="Profile Picture">
-            <h3>${data[i].name.first} ${data[i].name.last}</h3>
-            <span class="email">${data[i].email}</span>
+            <img class="avatar" src="${list[i].picture.large}" alt="Profile Picture">
+            <h3>${list[i].name.first} ${list[i].name.last}</h3>
+            <span class="email">${list[i].email}</span>
          </div>
          <div>
-            <span class="date">Joined ${data[i].registered.date}</span>
+            <span class="date">Joined ${list[i].registered.date}</span>
          </div>
       </li>
       `
@@ -77,24 +77,31 @@ showPage(data, 1);
 insertSearchBar();
 addPagination(data);
 
-// function search(list) {
-//    const searchBar = document.querySelector('#search');
-//    const searchInput = searchBar.value.toLowerCase();
-//    const matches = [];
-//    let i = 0;
-//    const studentList = data[i] 
-//    const studentName = (data[i].name.first + data[i].name.last).toLowerCase();
-//    for (i = 0; i < list.length; i++) {
-//       if (studentName.includes(searchInput)) {
-//          matches.push(studentList);
-//       }
-//    }
-// }
+function search(list) {
+   const searchBar = document.querySelector('#search');
+   const searchInput = searchBar.value.toLowerCase();
+   let matches = [];
+   for (let i = 0; i < list.length; i++) {
+      const studentList = list[i];
+      const studentName = (list[i].name.first + list[i].name.last).toLowerCase();
+      const noMatch = document.querySelector('.student-list')
+      if (studentName.includes(searchInput)) {
+         matches.push(studentList);
+      } 
+      else {
+         noMatch.className = 'no-results'
+         noMatch.innerHTML = `No results found, please try another name!`;
+         addPagination(0);
+      }
+   }
+   showPage(matches, 1)
+   addPagination(matches);
+}
 
 const searchBar = document.querySelector('#search');
 searchBar.addEventListener('keyup', (e) => {
    searchInput = e.target.value.toLowerCase();
-   console.log(searchInput);
+   search(data);
 })
  
 // function search(list)
