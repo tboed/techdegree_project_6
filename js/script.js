@@ -81,21 +81,26 @@ function search(list) {
    const searchBar = document.querySelector('#search');
    const searchInput = searchBar.value.toLowerCase();
    let matches = [];
+   const noMatch = document.querySelector('.student-list')
+   const pagination = document.querySelector('.pagination')
    for (let i = 0; i < list.length; i++) {
       const studentList = list[i];
       const studentName = (list[i].name.first + list[i].name.last).toLowerCase();
-      const noMatch = document.querySelector('.student-list')
       if (studentName.includes(searchInput)) {
          matches.push(studentList);
       } 
-      else {
-         noMatch.className = 'no-results'
-         noMatch.innerHTML = `No results found, please try another name!`;
-         addPagination(0);
-      }
    }
-   showPage(matches, 1)
-   addPagination(matches);
+   if (matches.length > 1) {
+      showPage(matches, 1)
+      addPagination(matches);
+      console.log(matches)
+   } else {
+      noMatch.className = 'no-results'
+      noMatch.innerHTML = `No results found, please try another name!`;
+      pagination.style.display = 'none';
+      console.log(matches)
+   }
+
 }
 
 const searchBar = document.querySelector('#search');
