@@ -95,7 +95,6 @@ function search(list) {
       addPagination(matches);
       console.log(matches)
    } else {
-      noMatch.className = 'no-results'
       noMatch.innerHTML = `No results found, please try another name!`;
       pagination.style.display = 'none';
       console.log(matches)
