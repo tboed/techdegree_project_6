@@ -91,9 +91,10 @@ function search(list) {
       } 
    }
    if (matches.length > 1) {
-      showPage(matches, 1)
+      showPage(matches, 1);
       addPagination(matches);
-      console.log(matches)
+      pagination.style.display =  'block';
+      console.log(matches);
    } else {
       noMatch.innerHTML = `No results found, please try another name!`;
       pagination.style.display = 'none';
