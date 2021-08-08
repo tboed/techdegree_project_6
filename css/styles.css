@@ -77,8 +77,6 @@ header h2 {
   width: 25px;
 }
 
-
-
 .student-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

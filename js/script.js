@@ -86,7 +86,7 @@ function search( list ) {
 			matches.push( studentList );
 		}
 	}
-	if ( matches.length > 1 ) {
+	if ( matches.length >= 1 ) {
 		showPage( matches, 1 );
 		addPagination( matches );
 		pagination.style.display = 'block';
